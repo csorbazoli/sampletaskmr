@@ -1,6 +1,9 @@
 package com.arvoia.sampletask.controller;
 
 import com.arvoia.sampletask.model.AvailResponse;
+
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 @RestController
 public class AvailRestController {
+	
+	private static final Logger LOG = Logger.getLogger(AvailRestController.class.getName());
 
   @Autowired
   private RestTemplate restTemplate;
@@ -30,6 +35,7 @@ public class AvailRestController {
   }
 
   private String getSearchResults() {
-    return restTemplate.getForEntity(vendorUrl, String.class).getBody();
+	  LOG.info("AvailRestController::getSearchResults "+vendorUrl);
+	  return restTemplate.getForEntity(vendorUrl, String.class).getBody();
   }
 }
