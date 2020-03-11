@@ -10,6 +10,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.arvoia.sampletask.model.AvailResponse;
+import com.arvoia.sampletask.service.AvailService;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,6 +45,9 @@ public class AvailRestControllerTest {
   private RestTemplate restTemplate;
 
   private MockMvc mockMvc;
+  
+  @MockBean
+  private AvailService availService;
 
   @Before
   public void setupTest() {
